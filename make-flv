@@ -1,0 +1,6 @@
+#!/bin/sh
+
+AUDIO_FILE=$1
+IMAGE_FILE=$2
+
+ffmpeg -loop_input -i "$AUDIO_FILE" -f image2 -i "$IMAGE_FILE" -r 1 -acodec copy -shortest "${AUDIO_FILE%%mp3}flv"

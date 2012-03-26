@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if `tmux has-session -t default`
+then
+    exec tmux attach -t default
+else
+    exec tmux new-session -s default
+fi

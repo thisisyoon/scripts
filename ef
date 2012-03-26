@@ -1,0 +1,10 @@
+#!/bin/sh
+
+results=`find -name "*$1"`
+
+if [ -n "$results" ]
+then
+  emacs $results
+else
+  echo "no such file: $1"
+fi

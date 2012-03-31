@@ -1,6 +1,6 @@
 #!/bin/sh
 
-results=`find . -name "*$1*"`
+results=`f $1`
 
 if [ -n "$results" ]
 then

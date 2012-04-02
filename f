@@ -1,3 +1,6 @@
 #!/bin/sh
 
-find . -name "*$1*" -not \( -type d -name ".?*" -prune \)
+# doesn't recurse into dot directories
+find . \( \
+    \( -type d -name ".?*" -prune \) \
+    -or -true \) -name "*$1*"

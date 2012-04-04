@@ -1,0 +1,17 @@
+#!/bin/sh
+
+FILES=/dev/stdin
+if [ $# -gt 0 ]
+then
+    FILES=$@
+fi
+
+BUFFER_FILE=`mktemp /tmp/copy-XXXXX`
+cat $FILES > $BUFFER_FILE
+
+if `which pbcopy`
+then
+    cat $BUFFER_FILE | pbcopy
+fi
+
+cat $BUFFER_FILE | xargs -0 tmux set-buffer

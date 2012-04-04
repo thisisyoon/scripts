@@ -1,3 +1,3 @@
 #!/bin/sh
 
-grep --context=3 -r $1 . | less
+grep --color=always --context=3 -r $1 . | less -r

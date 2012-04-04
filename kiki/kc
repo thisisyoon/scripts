@@ -7,6 +7,6 @@ KIKI_OUT_FILE=`mktemp $KIKI_DIR/kc-XXXXX`
 kiki "capture-tmux-scrollback" "cat > $KIKI_OUT_FILE"
 if [ -s $KIKI_OUT_FILE ]
 then
-    gxargs -a $KIKI_OUT_FILE echo -n | pbcopy
-    gxargs -a $KIKI_OUT_FILE tmux set-buffer
+    $XARGS -a $KIKI_OUT_FILE echo -n | pbcopy
+    $XARGS -a $KIKI_OUT_FILE tmux set-buffer
 fi

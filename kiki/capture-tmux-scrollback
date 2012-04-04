@@ -1,0 +1,7 @@
+#!/bin/sh
+
+TMUX_SB_FILE=/tmp/kiki/tmux-scrollback
+
+tmux capture-pane -S -2000
+tmux save-buffer -b 0 $TMUX_SB_FILE
+cat $TMUX_SB_FILE

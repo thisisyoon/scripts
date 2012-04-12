@@ -7,5 +7,5 @@ KIKI_OUT_FILE=`mktemp $KIKI_DIR/emacs-XXXXX`
 kiki "(f || true)" "cat > $KIKI_OUT_FILE"
 if [ -s $KIKI_OUT_FILE ]
 then
-    emacs `cat $KIKI_OUT_FILE`
+    $EDITOR `cat $KIKI_OUT_FILE`
 fi

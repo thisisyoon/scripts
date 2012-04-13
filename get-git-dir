@@ -1,0 +1,20 @@
+#!/bin/sh
+
+project_dir=$PWD
+
+while true
+do
+    if (ls -a $project_dir | grep "^.git$" > /dev/null)
+    then
+	echo $project_dir
+	exit 0
+    fi
+
+    new_project_dir=`dirname $project_dir`
+    if [ "$new_project_dir" = "$project_dir" ]
+    then
+	exit 1
+    fi
+
+    project_dir=$new_project_dir
+done

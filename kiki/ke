@@ -4,7 +4,7 @@ KIKI_DIR="/tmp/kiki"
 mkdir -p $KIKI_DIR
 KIKI_OUT_FILE=`mktemp $KIKI_DIR/emacs-XXXXX`
 
-kiki "(f || true)" "cat > $KIKI_OUT_FILE"
+kiki "(f-no-dir || true)" "cat > $KIKI_OUT_FILE"
 if [ -s $KIKI_OUT_FILE ]
 then
     $EDITOR `cat $KIKI_OUT_FILE`

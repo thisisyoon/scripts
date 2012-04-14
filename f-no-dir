@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# doesn't recurse into dot directories
+find . \
+    \( \( -type d -name ".?*" -prune \) -or -true \) \
+    -type f \
+    -name "*$1*"

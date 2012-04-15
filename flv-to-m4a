@@ -1,0 +1,5 @@
+#!/bin/sh
+
+FLV_FILE=$1
+
+ffmpeg -i "$AUDIO_FILE" -acodec copy -nv "${AUDIO_FILE%%flv}mp3"

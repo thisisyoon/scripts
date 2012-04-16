@@ -1,0 +1,15 @@
+#!/bin/sh
+
+MAX_LINES=`tput lines`
+
+TMP_FILE=`mktemp /tmp/lc/XXXXX`
+cat $@ > $TMP_FILE
+
+NUM_LINES=`cat $TMP_FILE | wc -l`
+
+if [ $NUM_LINES -gt $MAX_LINES ]
+then
+  less $TMP_FILE
+else
+  cat $TMP_FILE
+fi

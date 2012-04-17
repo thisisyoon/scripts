@@ -2,4 +2,4 @@
 
 FLV_FILE=$1
 
-ffmpeg -i "$AUDIO_FILE" -acodec copy -nv "${AUDIO_FILE%%flv}mp3"
+ffmpeg -i "$FLV_FILE" -acodec copy -vn "${FLV_FILE%%flv}m4a"

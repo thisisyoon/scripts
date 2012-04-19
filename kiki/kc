@@ -4,7 +4,7 @@ KIKI_DIR="/tmp/kiki/tmux-scrollback-copy"
 mkdir -p $KIKI_DIR
 KIKI_OUT_FILE=`mktemp $KIKI_DIR/kc-XXXXX`
 
-kiki --no-magic "capture-tmux-scrollback | tail -r" "cat > $KIKI_OUT_FILE"
+kiki --prefix="$1" --no-magic "capture-tmux-scrollback | tail -r" "cat > $KIKI_OUT_FILE"
 if [ -s $KIKI_OUT_FILE ]
 then
     $XARGS -a $KIKI_OUT_FILE echo -n | copy

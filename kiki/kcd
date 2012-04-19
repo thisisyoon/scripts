@@ -4,7 +4,7 @@ KIKI_DIR="/tmp/kiki"
 mkdir -p $KIKI_DIR
 KIKI_OUT_FILE=`mktemp $KIKI_DIR/cd-XXXXX`
 
-kiki "(fdir || true)" "cat > $KIKI_OUT_FILE"
+kiki --prefix="$1" "(fdir || true)" "cat > $KIKI_OUT_FILE"
 if [ -s $KIKI_OUT_FILE ]
 then
     cd `cat $KIKI_OUT_FILE`

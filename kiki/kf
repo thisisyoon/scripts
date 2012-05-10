@@ -4,7 +4,20 @@ KIKI_DIR="/tmp/kiki"
 mkdir -p $KIKI_DIR
 KIKI_OUT_FILE=`mktemp $KIKI_DIR/find-XXXXX`
 
-kiki "--prefix=$1" "(f || true)" "cat > $KIKI_OUT_FILE"
+PREFIX=""
+ROOT_DIR="."
+
+case $# in
+    1)
+	PREFIX=$1
+	;;
+    2)
+	ROOT_DIR=$1
+	PREFIX=$2
+	;;
+esac
+
+kiki "--prefix=$PREFIX" "(f \"$ROOT_DIR\" \"\" || true)" "cat > $KIKI_OUT_FILE"
 if [ -s $KIKI_OUT_FILE ]
 then
     $XARGS -a $KIKI_OUT_FILE echo -n | copy

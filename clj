@@ -35,11 +35,11 @@ if [ -f .clojure ]; then
 fi
 
 RLWRAP_ARGS="--remember -c -b $BREAK_CHARS"
-JAVA_ARGS="-XX:+TieredCompilation -Xbootclasspath/a:$cljjar -cp $cp $cljclass"
+JAVA_ARGS="-XX:+TieredCompilation -Xbootclasspath/a:$cljjar -cp $cp"
 
 if [ $# -eq 0 ]; then
-  rlwrap $RLWRAP_ARGS java $JAVA_ARGS
+  rlwrap $RLWRAP_ARGS java $JAVA_ARGS $cljclass
 else
-  exec java $JAVA_ARGS $*
+  exec java $JAVA_ARGS $cljclass $*
 fi
 

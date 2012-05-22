@@ -1,0 +1,17 @@
+function checked-cd () {
+    if [ "$1" = "../" -o "$1" = ".." ]
+    then
+        if [ "$2" = "UP_TOKEN" ]
+        then
+            # escape hatch for up
+            cd $1
+        else
+            echo "prefer up"
+        fi
+    elif [ "$1" = "../../" -o "$1" = "../.." ]
+    then
+        echo "prefer up2"
+    else
+        cd $1
+    fi
+}

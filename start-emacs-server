@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# for use in shell scripts
+$MPORTS_DIR/emacs --daemon

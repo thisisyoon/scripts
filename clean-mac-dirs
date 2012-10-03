@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+require 'logger'
+require 'pathname'
+
+logger = Logger.new(STDOUT)
+logger.level = Logger::INFO
+
+MAC_DIRS = [
+  "Documents",
+  "Movies",
+  "Music",
+  "Pictures",
+  "Public"
+]
+
+GARBAGE_FILES = [
+  ".localized",
+  "Drop Box"
+]
+
+for dir in MAC_DIRS
+  pn = Pathname.new(Dir.home) + dir
+
+  next unless pn.exist?
+
+  safe_to_delete = true
+  pn.find do |subentry|
+    subbase = subentry.basename.to_s
+    safe_to_delete &&= (MAC_DIRS.include?(subbase) or GARBAGE_FILES.include?(subbase))
+
+    break unless safe_to_delete
+  end
+
+  logger.info("Deleting: #{pn}")
+  pn.rmtree if safe_to_delete
+end

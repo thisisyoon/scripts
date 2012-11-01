@@ -16,6 +16,7 @@ MAC_DIRS = [
 
 GARBAGE_FILES = [
   ".localized",
+  ".DS_Store",
   "Drop Box"
 ]
 
